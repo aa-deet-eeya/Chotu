@@ -3,8 +3,8 @@ const client = new discord.Client();
 const shell = require('shelljs');
 const querystring = require('querystring');
 const axios = require('axios');
-const token = 'NzA3OTc4NzQ2MzM3OTUxNzQ0.XsTQlg.2dQMj3otbSQb7szqq2mN_maaNzk';
-const googleapi = 'AIzaSyDpHliP1QKd9r4vZssPid4jam4Pz5XxZ9w';
+const token = '';
+const googleapi = '';
 
 
 client.login(token);
