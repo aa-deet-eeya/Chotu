@@ -33,6 +33,26 @@ client.on('ready', () => {
 
 
 
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~help~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+client.on('message', msg => {
+	if (msg.content === '--help') {
+		const help = new discord.MessageEmbed()
+			.setColor('#0099ff')
+			.setTitle('Help Menu')
+			.addFields(
+				{ name: '--start alternate commands', value: '1. chotu server chalu krr\n2. server Chalu krr bsdk\n3. server chala \n4.chotu server chala \n5. server chalu karr bhosdi\n\n' },
+				{ name: '--stop alternate commands', value: '1. chotu chal phut abb \n2. server bandd kr bhosdi' }
+			);
+
+		msg.channel.send(help);
+	}
+});
+
+
+
+
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~Start/Stop the Server~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -85,8 +105,8 @@ client.on('message', msg => {
 
 					else {
 
-						const yt = (i)=> {
-							if(i < (res.data.items.length) ) {
+						const yt = (i) => {
+							if (i < (res.data.items.length)) {
 								let link = ('https://www.youtube.com/watch?v=' + res.data.items[0].id.videoId);
 
 
@@ -99,7 +119,7 @@ client.on('message', msg => {
 									.setImage(res.data.items[i].snippet.thumbnails.high.url);
 
 							}
-						
+
 							else {
 								var ytembed = new discord.MessageEmbed()
 									.setColor('#0099ff')
@@ -107,44 +127,44 @@ client.on('message', msg => {
 									.setDescription('End of search results');
 							}
 
-						msg.channel.send(ytembed);
+							msg.channel.send(ytembed);
 						}
 
 						yt(i);
 
-						const filter = (m) =>{
+						const filter = (m) => {
 							/**m.author.id === msg.author.id &&**/ m.content === 'n'
-						} ;
+						};
 
 						/**const collector =**/ msg.channel.awaitMessages(filter,
-															{
-																max: 1, 
-																time : 10*1000 ,
-																errors : ['time']
-															})
-														.then((collected)=> {
-															i++ ;
-															yt(i) ;
-														})
-														.catch( (collected)=>{
-															console.log('nope') ;
-														});
+							{
+								max: 1,
+								time: 10 * 1000,
+								errors: ['time']
+							})
+							.then((collected) => {
+								i++;
+								yt(i);
+							})
+							.catch((collected) => {
+								console.log('nope');
+							});
 
 
-					}	
-				}).catch((err)=> {
+					}
+				}).catch((err) => {
 					console.log(err);
 				});
 
-		
-		
 
-		
+
+
+
 		}
-	
+
 		else {
 			msg.channel.send(
-			new discord.MessageEmbed().setColor('#0099ff').setTitle('Error').setDescription('Input some valid search term')
+				new discord.MessageEmbed().setColor('#0099ff').setTitle('Error').setDescription('Input some valid search term')
 			);
 		}
 
